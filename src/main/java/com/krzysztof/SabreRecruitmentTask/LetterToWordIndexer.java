@@ -16,6 +16,10 @@ public class LetterToWordIndexer {
         return this.letterWordMap;
     }
 
+    public void printIndexingText() {
+        letterWordMap.keySet().forEach(key -> System.out.println(key + ": " +  letterWordMap.get(key)));
+    }
+
     private void initialMap(String text) {
         if (text != null && text.length() != 0) {
             createLetterWordMapFromText(text);
