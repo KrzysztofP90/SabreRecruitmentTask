@@ -37,8 +37,15 @@ public class LetterToWordIndexer {
     }
 
     private String[] getDistinctWordList(String text) {
-        return Arrays.stream(text.split(" ")).distinct().map(String::toLowerCase)
+        return Arrays.stream(text.split(" ")).map(this::removePunctuationMarks).distinct().map(String::toLowerCase)
                 .toArray(String[]::new);
+    }
+
+    private String removePunctuationMarks(String word) {
+        if (!Character.isLetter(word.charAt(word.length() - 1))) {
+            return word.substring(0, word.length() - 1);
+        }
+        return word;
     }
 
     private void addKeysToMapFromWordsArray(String[] arrayOfWord) {

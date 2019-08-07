@@ -91,4 +91,17 @@ public class LetterToWordIndexerTest {
 
         Assert.assertEquals(expectedListForA, actualList);
     }
+
+    @Test
+    public void checkIfPunctuationMarksAreIgnored() {
+        String testInput = "ala has: a cat, a dog";
+        Character letterToTest = 'a';
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+
+        String[] arrayForA = {"a", "ala", "cat", "has"};
+        List<String> expectedListForA = Arrays.asList(arrayForA);
+        List<String> actualListForA = indexer.getLetterWordMap().get(letterToTest);
+
+        Assert.assertEquals(expectedListForA, actualListForA);
+    }
 }
