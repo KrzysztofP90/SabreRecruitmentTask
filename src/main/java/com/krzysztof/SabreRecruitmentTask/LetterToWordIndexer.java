@@ -18,6 +18,11 @@ public class LetterToWordIndexer {
 
     private void initialMap(String text) {
         createLetterWordMapFromText(text);
+        sortWordsInLetterWordMap();
+    }
+
+    private void sortWordsInLetterWordMap() {
+        letterWordMap.keySet().forEach(key -> Collections.sort(letterWordMap.get(key)));
     }
 
     private void createLetterWordMapFromText(String text) {

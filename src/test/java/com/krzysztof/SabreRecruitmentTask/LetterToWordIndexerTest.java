@@ -6,10 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class LetterToWordIndexerTest {
 
@@ -80,5 +77,18 @@ public class LetterToWordIndexerTest {
         long expectedCountOfCats = 1;
 
         Assert.assertEquals(expectedCountOfCats, actualCountOfCats);
+    }
+
+    @Test
+    public void checkIfAllMatchedWordsAreAddedToLetterInAlphabeticOrder() {
+        String testInput = "ala has a cat";
+        Character letterToTest = 'a';
+        String[] arrayOfWordsForA = {"a", "ala", "cat", "has" };
+        List<String> expectedListForA = new ArrayList<>(Arrays.asList(arrayOfWordsForA));
+
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+        List<String> actualList = indexer.getLetterWordMap().get(letterToTest);
+
+        Assert.assertEquals(expectedListForA, actualList);
     }
 }
