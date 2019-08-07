@@ -23,7 +23,12 @@ public class LetterToWordIndexer {
     private void createLetterWordMapFromText(String text) {
         String[] arrayOfWord = this.getDistinctWordList(text);
         addKeysToMapFromWordsArray(arrayOfWord);
+        Arrays.stream(arrayOfWord).forEach(this::insertWordToLetterWordMap);
 
+    }
+
+    private void insertWordToLetterWordMap(String word) {
+        word.chars().mapToObj(ch -> (char) ch).distinct().forEach(ch-> letterWordMap.get(ch).add(word));
     }
 
     private String[] getDistinctWordList(String text) {
