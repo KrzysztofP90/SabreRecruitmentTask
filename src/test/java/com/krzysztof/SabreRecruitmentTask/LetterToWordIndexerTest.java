@@ -104,4 +104,32 @@ public class LetterToWordIndexerTest {
 
         Assert.assertEquals(expectedListForA, actualListForA);
     }
+
+    @Test
+    public void checkIfTextToIndexingIsEmptyStringMapIsEmpty() {
+        String testInput = "";
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+        Map<Character, List<String>> actualMap = indexer.getLetterWordMap();
+
+        assertTrue(actualMap.isEmpty());
+    }
+
+    @Test
+    public void checkIfTextToIndexingIsNullMapIsEmpty() {
+        String testInput = null;
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+        Map<Character, List<String>> actualMap = indexer.getLetterWordMap();
+
+        assertTrue(actualMap.isEmpty());
+    }
+
+    @Test
+    public void checkIfTextHasOnlySpacesMapIsEmpty() {
+        String testInput = "                   ";
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+        Map<Character, List<String>> actualMap = indexer.getLetterWordMap();
+
+        assertTrue(actualMap.isEmpty());
+    }
+
 }

@@ -17,8 +17,10 @@ public class LetterToWordIndexer {
     }
 
     private void initialMap(String text) {
-        createLetterWordMapFromText(text);
-        sortWordsInLetterWordMap();
+        if (text != null && text.length() != 0) {
+            createLetterWordMapFromText(text);
+            sortWordsInLetterWordMap();
+        }
     }
 
     private void sortWordsInLetterWordMap() {
