@@ -132,4 +132,12 @@ public class LetterToWordIndexerTest {
         assertTrue(actualMap.isEmpty());
     }
 
+    @Test
+    public void checkIfIndexerIsNotCaseSensitivity() {
+        String testInput = "ala anD cat coding";
+        LetterToWordIndexer indexer = new LetterToWordIndexer(testInput);
+
+        assertFalse(indexer.getLetterWordMap().containsKey('D'));
+    }
+
 }
